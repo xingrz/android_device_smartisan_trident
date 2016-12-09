@@ -59,6 +59,9 @@ on boot
     insmod /vendor/lib/modules/qca_cld3_wlan.ko
     setprop wlan.driver.status "ok"
 
+    # Wifi firmware reload path
+    chown wifi wifi /sys/module/wlan/parameters/fwpath
+
 on fs
     mkdir /persist/cmel 0700 system system
 
