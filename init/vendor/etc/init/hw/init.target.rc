@@ -83,6 +83,10 @@ on post-fs-data
     mkdir /data/misc/seemp 0700 system system
     mkdir /data/vendor/tloc 0700 system drmrpc
 
+    # Generate BT address
+    mkdir /data/vendor/mac_addr 0771 bluetooth bluetooth
+    start bt-mac-generator
+
 # For cpusets initialize for Silver Only first and then Silver + Gold
 # Silver Only configuration cannot work with 0-7
 on boot
@@ -125,6 +129,13 @@ service pd_mapper /vendor/bin/pd-mapper
     class core
     user system
     group system
+
+service bt-mac-generator /vendor/bin/bt-mac-generator
+    class main
+    user bluetooth
+    group bluetooth
+    oneshot
+    disabled
 
 #Peripheral manager
 service per_mgr /vendor/bin/pm-service
