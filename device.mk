@@ -111,7 +111,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_STATIC_BOOT_CONTROL_HAL := \
     bootctrl.sdm845 \
     libcutils \
-    libgptutils \
+    libgptutils.trident.recovery \
     libz
 
 PRODUCT_PACKAGES_DEBUG += \
