@@ -108,12 +108,6 @@ PRODUCT_PACKAGES += \
     update_engine_sideload \
     update_verifier
 
-PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    bootctrl.sdm845 \
-    libcutils \
-    libgptutils.trident.recovery \
-    libz
-
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
 
@@ -152,8 +146,10 @@ PRODUCT_PACKAGES += \
 # Boot control
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl \
+    android.hardware.boot@1.0-impl.recovery \
     android.hardware.boot@1.0-service \
-    bootctrl.sdm845
+    bootctrl.sdm845 \
+    bootctrl.sdm845.recovery
 
 # Camera
 PRODUCT_PACKAGES += \
