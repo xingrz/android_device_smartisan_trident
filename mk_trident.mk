@@ -39,6 +39,3 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="trident-user 8.1.0 OPM1.171019.026 1 dev-keys"
 
 BUILD_FINGERPRINT := SMARTISAN/trident/trident:8.1.0/OPM1.171019.026/1554365383:user/dev-keys
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.build.security_patch=2019-01-10
