@@ -2,7 +2,7 @@
 # system.prop for sdm845
 #
 
-rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so
+vendor.rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so
 #rild.libargs=-d /dev/smd0
 persist.rild.nitz_plmn=
 persist.rild.nitz_long_ons_0=
