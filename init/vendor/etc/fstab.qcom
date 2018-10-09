@@ -47,3 +47,4 @@
 /dev/block/zram0                                        none               swap    defaults                                             zramsize=33%
 /devices/platform/soc/a600000.ssusb/a600000.dwc3/xhci-hcd.*.auto*    /storage/usbotg    vfat    nosuid,nodev    wait,voldmanaged=usbotg:auto
 /devices/platform/soc/a800000.ssusb/a800000.dwc3/xhci-hcd.*.auto*    /storage/usbotg    vfat    nosuid,nodev    wait,voldmanaged=usbotg:auto
+/mnt/vendor/persist                                     /persist           none    bind                                                 wait
