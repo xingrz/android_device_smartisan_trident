@@ -22,6 +22,9 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
     $(LOCAL_PATH)/overlay-mokee
 
+PRODUCT_PACKAGES += \
+    NoCutoutOverlay
+
 # Properties
 -include $(LOCAL_PATH)/vendor_prop.mk
 
