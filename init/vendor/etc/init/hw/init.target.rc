@@ -297,16 +297,16 @@ service cdsprpcd /vendor/bin/cdsprpcd
 ## imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
 service imsqmidaemon /system/vendor/bin/imsqmidaemon
     class main
-    user system
+    user radio
     socket ims_qmid stream 0660 system radio
     group radio log diag
 
 # imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
 service imsdatadaemon /system/vendor/bin/imsdatadaemon
     class main
-    user system
+    user radio
     socket ims_datad stream 0660 system radio
-    group system wifi radio inet log diag
+    group radio wifi inet log diag
     disabled
 
 #service mdm_helper /system/bin/mdm_helper
@@ -372,7 +372,7 @@ on property:vendor.ims.QMI_DAEMON_STATUS=1
 
 service ims_rtp_daemon /system/vendor/bin/ims_rtp_daemon
    class main
-   user system
+   user radio
    group radio diag inet log
 
 on property:vendor.ims.DATA_DAEMON_STATUS=1
