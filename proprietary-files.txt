@@ -372,7 +372,7 @@ vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmplugin_customer.so
 
 # Fingerprint - FPC
 vendor/bin/hw/android.hardware.biometrics.fpcfingerprint@2.1-service
-vendor/etc/init/android.hardware.biometrics.fpcfingerprint@2.1-service.rc
+vendor/etc/init/android.hardware.biometrics.fpcfingerprint@2.1-service.rc|838abca243a6b2436bafd43bf1aff3593545bd56
 vendor/etc/permissions/com.fingerprints.extension.xml
 vendor/framework/com.fingerprints.extension.jar
 vendor/lib/com.fingerprints.extension@1.0.so
@@ -380,7 +380,7 @@ vendor/lib64/com.fingerprints.extension@1.0.so
 
 # Fingerprint - Goodix
 vendor/bin/hw/android.hardware.biometrics.goodixfingerprint@2.1-service
-vendor/etc/init/android.hardware.biometrics.goodixfingerprint@2.1-service.rc
+vendor/etc/init/android.hardware.biometrics.goodixfingerprint@2.1-service.rc|6f1bef797f5d1b3fed2691138b8c4497f1dfcda6
 vendor/lib/libgf_ca.so
 vendor/lib/libgf_hal.so
 vendor/lib/libgoodixfingerprintd_binder.so
@@ -394,7 +394,7 @@ vendor/lib64/vendor.goodix.hardware.fingerprintextension@1.0.so
 
 # Fingerprint - Novatek
 vendor/bin/hw/android.hardware.biometrics.nvtfingerprint@2.1-service
-vendor/etc/init/android.hardware.biometrics.nvtfingerprint@2.1-service.rc
+vendor/etc/init/android.hardware.biometrics.nvtfingerprint@2.1-service.rc|f8e0e4d1a01128f5c5e5607cac13786944b9831f
 vendor/lib/com.novatek.fingerprint@1.0_vendor.so
 vendor/lib/hw/nvtfingerprint.default.so
 vendor/lib/libfpr_ca.so
