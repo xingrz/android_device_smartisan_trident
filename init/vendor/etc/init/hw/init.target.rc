@@ -53,6 +53,14 @@ on fs
     swapon_all /vendor/etc/fstab.qcom
     restorecon_recursive /persist
     mkdir /persist/data 0700 system system
+    mkdir /persist/hlos_rfs 0700 vendor_rfs vendor_rfs_shared
+    mkdir /persist/hlos_rfs/shared 0700 vendor_rfs vendor_rfs_shared
+    mkdir /persist/rfs 0700 vendor_rfs vendor_rfs
+    mkdir /persist/rfs/msm 0700 vendor_rfs vendor_rfs
+    mkdir /persist/rfs/msm/adsp 0700 vendor_rfs vendor_rfs
+    mkdir /persist/rfs/msm/mpss 0700 vendor_rfs vendor_rfs
+    mkdir /persist/rfs/msm/slpi 0700 vendor_rfs vendor_rfs
+    mkdir /persist/rfs/shared 0700 vendor_rfs vendor_rfs
 
 on post-fs
     start qseecomd
