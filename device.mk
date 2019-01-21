@@ -249,7 +249,7 @@ PRODUCT_PACKAGES += \
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
-    vendor.mokee.livedisplay@1.0-service-sdm
+    vendor.mokee.livedisplay@2.0-service-sdm
 
 # Media
 PRODUCT_PACKAGES += \
