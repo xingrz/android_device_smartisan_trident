@@ -58,6 +58,9 @@ BOARD_KERNEL_SEPARATED_DTBO := true
 
 TARGET_PREBUILT_KERNEL := device/smartisan/trident/prebuilt/Image.gz-dtb
 
+BOARD_MKBOOTIMG_ARGS += \
+    --os_patch_level 2018-07-00
+
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_DTBOIMG_PARTITION_SIZE := 8388608
