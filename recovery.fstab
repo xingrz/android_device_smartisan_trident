@@ -19,3 +19,6 @@
 
 # Calibration
 /persist        emmc    /dev/block/bootdevice/by-name/persist       flags=backup=1;display="Persist"
+
+# Logic data
+/data           ext4    /dev/block/logic_data                       flags=encryptable=footer;length=-16384
