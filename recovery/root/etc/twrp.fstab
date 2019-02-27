@@ -20,6 +20,16 @@
 # Calibration
 /persist        emmc    /dev/block/bootdevice/by-name/persist       flags=backup=1;display="Persist"
 
+# Bootloader (A)
+/abl_a          emmc    /dev/block/bootdevice/by-name/abl_a         flags=backup=1;display="Bootloader (A)"
+/xbl_a          emmc    /dev/block/bootdevice/by-name/xbl_a         flags=backup=1;subpartitionof=/abl_a
+/xbl_config_a   emmc    /dev/block/bootdevice/by-name/xbl_config_a  flags=backup=1;subpartitionof=/abl_a
+
+# Bootloader (B)
+/abl_b          emmc    /dev/block/bootdevice/by-name/abl_b         flags=backup=1;display="Bootloader (B)"
+/xbl_b          emmc    /dev/block/bootdevice/by-name/xbl_b         flags=backup=1;subpartitionof=/abl_b
+/xbl_config_b   emmc    /dev/block/bootdevice/by-name/xbl_config_b  flags=backup=1;subpartitionof=/abl_b
+
 # Logic data
 /data           ext4    /dev/block/logic_data                       flags=encryptable=footer;length=-16384
 
