@@ -56,8 +56,36 @@ TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/smartisan/sdm845
 TARGET_KERNEL_CONFIG := mokee_trident_defconfig
 
+NEED_KERNEL_MODULE_SYSTEM := true
+
 # HAX: SELinux Permissive - Remove ASAP
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+
+# Audio
+USE_XML_AUDIO_POLICY_CONF := 1
+
+# Camera
+TARGET_USES_QTI_CAMERA_DEVICE := true
+
+# Charger
+BOARD_CHARGER_DISABLE_INIT_BLANK := true
+
+# Display
+TARGET_USES_HWC2 := true
+
+# Lights
+TARGET_PROVIDES_LIBLIGHT := true
+
+# Partitions
+BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
+BOARD_DTBOIMG_PARTITION_SIZE := 8388608
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2998927360
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
+BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
+TARGET_COPY_OUT_VENDOR := vendor
+
+# Properties
+BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
 # Recovery
 BOARD_USES_RECOVERY_AS_BOOT := true
@@ -67,6 +95,22 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/recovery.fstab
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USES_MKE2FS := true
+
+# Root
+BOARD_ROOT_EXTRA_FOLDERS := bt_firmware dsp firmware persist
+
+# RenderScript
+OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
+
+# RIL
+TARGET_RIL_VARIANT := caf
+
+# Treble
+BOARD_VNDK_VERSION := current
+PRODUCT_FULL_TREBLE_OVERRIDE := true
+
+# Verified Boot
+BOARD_AVB_ENABLE := true
 
 # inherit from the proprietary version
 -include vendor/smartisan/trident/BoardConfigVendor.mk
