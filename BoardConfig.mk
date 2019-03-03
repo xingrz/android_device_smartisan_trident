@@ -105,6 +105,9 @@ OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 # RIL
 TARGET_RIL_VARIANT := caf
 
+# SELinux
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor-minimal
+
 # Treble
 BOARD_VNDK_VERSION := current
 PRODUCT_FULL_TREBLE_OVERRIDE := true
