@@ -22,6 +22,9 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
     $(LOCAL_PATH)/overlay-mokee
 
+# Properties
+-include $(LOCAL_PATH)/vendor_prop.mk
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth.xml \
@@ -269,6 +272,9 @@ PRODUCT_PACKAGES += \
     nqnfcee_access.xml \
     nqnfcse_access.xml \
     Tag
+
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/nfc,$(TARGET_COPY_OUT_VENDOR)/etc)
 
 # Power
 PRODUCT_PACKAGES += \

@@ -28,8 +28,7 @@
 import /vendor/etc/init/hw/init.qcom.usb.rc
 import /vendor/etc/init/hw/init.msm.usb.configfs.rc
 import /vendor/etc/init/hw/init.target.rc
-import /vendor/etc/init/hw/init.qcom.factory.rc
-import /vendor/etc/init/hw/init.qcom.test.rc
+import /vendor/etc/init/hw/init.trident.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -121,7 +120,7 @@ on boot
 
 #   Define TCP buffer sizes for various networks
 #   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
-    setprop net.tcp.buffersize.wifi    524288,2097152,4194304,262144,524288,1048576
+    # setprop net.tcp.buffersize.wifi    524288,2097152,4194304,262144,524288,1048576
 
 
     setprop ro.telephony.call_ring.multiple false
@@ -961,6 +960,10 @@ service atfwd /vendor/bin/ATFWD-daemon
     class late_start
     user system
     group system radio
+# SMARTISAN_BEGIN: (CCM4004: Default disable ATFWD daemon)
+# 2017-04-28 houxiaofei: Default disable atfwd daemon, and controlled by prop. M205031
+    disabled
+# SMARTISAN_END: (CCM4004: Default disable ATFWD daemon)
 
 service hostapd_fst /vendor/bin/hostapd -dd -g /data/vendor/wifi/hostapd/global /data/misc/wifi/hostapd.conf
     class late_start

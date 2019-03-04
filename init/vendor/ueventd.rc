@@ -26,7 +26,11 @@
 #
 
 # the DIAG device node is not world writable/readable.
-/dev/diag                 0660   system     oem_2901
+#SMARTISAN_BEGIN:(CCM5018 change /dev/diag permission)
+#2017-12-15 cuipengfei:fix diag_mdlog can't use issue. M0212215
+/dev/diag                 0666   system     oem_2901
+#SMARTISAN_EDN:(CCM5018 change /dev/diag permission)
+/dev/usb_aoa              0660   root       usb
 
 /dev/genlock              0666   system     system
 /dev/wlan                 0660   wifi       wifi
@@ -56,6 +60,10 @@
 /dev/smd2                 0660   bluetooth  bluetooth
 /dev/smd3                 0660   bluetooth  bluetooth
 /dev/btpower              0660   bluetooth  system
+
+# Begin Immersion changes
+/dev/tspdrv               0660   system     system
+# End Immersion changes
 
 #permissions for pta
 /dev/pta                  0660   system     system

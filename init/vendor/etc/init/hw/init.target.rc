@@ -48,6 +48,10 @@ on init
 on fs
     wait /dev/block/platform/soc/1d84000.ufshc
     symlink /dev/block/platform/soc/1d84000.ufshc /dev/block/bootdevice
+
+    start logic_volume
+    wait /dev/block/logic_data
+
     mount_all /vendor/etc/fstab.qcom
     swapon_all /vendor/etc/fstab.qcom
     restorecon_recursive /persist
@@ -87,10 +91,10 @@ on boot
     write /dev/cpuset/background/cpus 0-3
     write /dev/cpuset/system-background/cpus 0-3
     write /dev/cpuset/top-app/cpus 0-7
-    write /dev/cpuset/foreground/cpus 0-7
-    write /dev/cpuset/foreground/boost/cpus 0-7
-    write /dev/cpuset/background/cpus 0-7
-    write /dev/cpuset/system-background/cpus 0-7
+    write /dev/cpuset/foreground/cpus 0-3
+    write /dev/cpuset/foreground/boost/cpus 0-3
+    write /dev/cpuset/background/cpus 0-2
+    write /dev/cpuset/system-background/cpus 0-3
 
 # Add a cpuset for the camera daemon
 # We want all cores for camera
@@ -359,7 +363,10 @@ service ims_rtp_daemon /system/vendor/bin/ims_rtp_daemon
 
 on property:vendor.ims.DATA_DAEMON_STATUS=1
     start ims_rtp_daemon
-    start vendor.imsrcsservice
+## SMARTISAN_BEGIN:(Disabled imsrcsservice daemon)
+## houxioafei 2017-12-1. M0208205
+#    start vendor.imsrcsservice
+## SMARTISAN_END: (Disabled imsrcsservice daemon)
 
 service ppd /vendor/bin/mm-pp-dpps
     class late_start

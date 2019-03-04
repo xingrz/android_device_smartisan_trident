@@ -90,7 +90,7 @@ else
     if [ "$arch_type" == "aarch64" ] && [ $MemTotal -gt 2097152 ]; then
         echo 10 > /sys/module/process_reclaim/parameters/pressure_min
         echo 1024 > /sys/module/process_reclaim/parameters/per_swap_size
-        echo "18432,23040,27648,32256,55296,80640" > /sys/module/lowmemorykiller/parameters/minfree
+        # echo "18432,23040,27648,32256,55296,80640" > /sys/module/lowmemorykiller/parameters/minfree
         echo 81250 > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
     elif [ "$arch_type" == "aarch64" ] && [ $MemTotal -gt 1048576 ]; then
         echo 10 > /sys/module/process_reclaim/parameters/pressure_min
@@ -2620,7 +2620,7 @@ case "$target" in
 
 	case "$soc_id" in
 		"321" | "341") #sdm845
-		start_hbtp
+		# start_hbtp
 		;;
 	esac
 	# Core control parameters
@@ -2648,15 +2648,15 @@ case "$target" in
 	echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/rate_limit_us
 	echo 1209600 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_freq
 	echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/pl
-        echo 576000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+	echo 748000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 
 	# configure governor settings for big cluster
 	echo "schedutil" > /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
 	echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/schedutil/rate_limit_us
 	echo 1574400 > /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_freq
 	echo 1 > /sys/devices/system/cpu/cpu4/cpufreq/schedutil/pl
-	echo "0:1324800" > /sys/module/cpu_boost/parameters/input_boost_freq
-	echo 120 > /sys/module/cpu_boost/parameters/input_boost_ms
+	echo "0:1132800" > /sys/module/cpu_boost/parameters/input_boost_freq
+	echo 600 > /sys/module/cpu_boost/parameters/input_boost_ms
 	# Limit the min frequency to 825MHz
 	echo 825000 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
 
@@ -2729,7 +2729,7 @@ case "$target" in
 	echo 10 > /sys/class/devfreq/soc:qcom,mincpubw/polling_interval
 
 	# cpuset parameters
-        echo 0-3 > /dev/cpuset/background/cpus
+        echo 0-1 > /dev/cpuset/background/cpus
         echo 0-3 > /dev/cpuset/system-background/cpus
 
 	# Turn off scheduler boost at the end

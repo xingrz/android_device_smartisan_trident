@@ -268,7 +268,7 @@ case "$target" in
         case "$soc_hwplatform" in
             *)
                 if [ $fb_width -le 1600 ]; then
-                    setprop ro.sf.lcd_density 560
+                    setprop ro.sf.lcd_density 400
                     setprop dalvik.vm.heapgrowthlimit 256m
                 else
                     setprop ro.sf.lcd_density 640
