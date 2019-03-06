@@ -73,6 +73,9 @@ BOARD_CHARGER_DISABLE_INIT_BLANK := true
 # Display
 TARGET_USES_HWC2 := true
 
+# Filesystem
+TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
+
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
