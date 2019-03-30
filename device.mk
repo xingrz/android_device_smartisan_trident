@@ -70,6 +70,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     ims-ext-common
 
+# Init
+PRODUCT_PACKAGES += \
+    init.qcom.rc
+
+# Media
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/media/media_profiles_vendor.xml:system/etc/media_profiles_vendor.xml
+
 # Net
 PRODUCT_PACKAGES += \
     netutils-wrapper-1.0
