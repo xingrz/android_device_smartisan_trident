@@ -118,7 +118,7 @@ BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/private
 PRODUCT_FULL_TREBLE_OVERRIDE := false
 
 # Verified Boot
-BOARD_AVB_ENABLE := true
+# BOARD_AVB_ENABLE := true
 
 # inherit from the proprietary version
 -include vendor/smartisan/trident/BoardConfigVendor.mk
