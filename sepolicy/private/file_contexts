@@ -1,0 +1,7 @@
+# Logic volume
+/(vendor|system/vendor)/bin/dm-tool		u:object_r:logic_volume_exec:s0
+/(vendor|system/vendor)/bin/logic_volume	u:object_r:logic_volume_exec:s0
+
+# Block device
+/dev/block/platform/soc/7c4000.sdhci/by-name/ramdump	u:object_r:ramdump_block_device:s0
+/dev/block/platform/soc/1d84000.ufshc/su[a-z]		u:object_r:sec_block_device:s0
