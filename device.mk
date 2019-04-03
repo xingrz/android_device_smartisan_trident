@@ -74,6 +74,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     init.qcom.rc
 
+# Lights
+PRODUCT_PACKAGES += \
+    android.hardware.light@2.0-service.trident
+
 # Media
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/media/media_profiles_vendor.xml:system/etc/media_profiles_vendor.xml
