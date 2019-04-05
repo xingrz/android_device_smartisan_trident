@@ -1,0 +1,74 @@
+debug.sf.latch_unsignaled=0
+
+#codecs:(PARSER_)AAC AC3 AMR_NB AMR_WB AVI DTS FLV 3GP 3G2 MKV MP2PS MP2TS MP3 OGG QCP WAV FLAC AIFF APE DSD
+mm.enable.qcom_parser=13631471
+
+#disable remote extractor
+media.stagefright.extractremote=false
+
+# System property for cabl
+ro.qualcomm.cabl=0
+
+#system prop for wipower support
+ro.bluetooth.emb_wp_mode=false
+ro.bluetooth.wipower=false
+
+#enable drm service
+drm.service.enabled=true
+
+# Multisim config
+persist.radio.multisim.config=dsds
+# Default network mode
+ro.telephony.default_network=22,22
+# Ap defined ecclist
+ro.ril.ecclist=911,112,000,08,110,118,119,999,120,122
+# Redirecting party number feature
+persist.radio.redir_party_num=0
+# Enable RAT in operator searching result
+persist.radio.rat_on=combine
+
+#SMARTISAN_BEGIN:(Update property name)
+#2018-07-02 cuipengfei:property name update in android O
+#Report PS operator name for SRLTE
+persist.vendor.radio.sglte.eons_domain=ps
+# Enable report reject cause when REG rejected permanently
+persist.vendor.radio.lte_vrte_ltd=1
+#SMARTISAN_END:(Update property name)
+
+# Default APN protocal
+ro.radio.apn.protocal=IPV4V6
+# Temp switch DDS feature
+persist.radio.enable_temp_dds=1
+# Report audio codec
+persist.vendor.radio.report_codec=1
+
+#Enable IMS
+persist.radio.calls.on.ims=true
+persist.radio.jbims=1
+persist.radio.vrte_logic=1
+
+# SMARTISAN_BEGIN (CCM2016:FAKE BASE STATION DETECTION)
+# 2017-12-03 guochenggang:create the feature M0208346
+# Fake Base Station Detection M0208346
+persist.vendor.radio.bar_fake_gcell=true
+# SMARTISAN_END (CCM2016:FAKE BASE STATION DETECTION)
+
+ro.product.codename=Smartisan R1
+
+#Headset button input device name
+ro.system.headsetinput=sdm845-tavil-snd-card Button Jack
+persist.sys.perfprofile=1
+
+# CA config
+ro.radio.ca.enable=true
+
+#(Fancy Parser Mask) mov,rm,mkv,avi,mp3,ac3,flv,dts
+mm.enable.fancy_parser=255
+
+#enable klogd feature for debugging in user variant
+ro.logd.kernel=true
+
+# Cancel trace file's size limit
+persist.smartisan.linelimit=false
+#Identify usb device time
+persist.usbalsa.waittimems=10000

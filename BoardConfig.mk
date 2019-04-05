@@ -86,7 +86,7 @@ TARGET_COPY_OUT_VENDOR := vendor
 
 # Properties
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
-TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
+TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop $(DEVICE_PATH)/system_tident.prop
 
 # Recovery
 BOARD_USES_RECOVERY_AS_BOOT := true
