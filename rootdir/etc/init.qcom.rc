@@ -1,2 +1,95 @@
 on init
     mount none /system/etc/media_profiles_vendor.xml /vendor/etc/media_profiles_vendor.xml bind
+
+    # Create energy-aware scheduler tuning nodes
+    mkdir /dev/stune/audio-app
+    chown system system /dev/stune/audio-app
+    chown system system /dev/stune/audio-app/tasks
+    chmod 0664 /dev/stune/audio-app/tasks
+
+    chown system system /dev/stune/cgroup.procs
+    chown system system /dev/stune/foreground/cgroup.procs
+    chown system system /dev/stune/background/cgroup.procs
+    chown system system /dev/stune/top-app/cgroup.procs
+    chown system system /dev/stune/rt/cgroup.procs
+    chown system system /dev/stune/audio-app/cgroup.procs
+
+    chmod 0664 /dev/stune/cgroup.procs
+    chmod 0664 /dev/stune/foreground/cgroup.procs
+    chmod 0664 /dev/stune/background/cgroup.procs
+    chmod 0664 /dev/stune/top-app/cgroup.procs
+    chmod 0664 /dev/stune/rt/cgroup.procos
+    chmod 0664 /dev/stune/audio-app/cgroup.procs
+
+    # Create cgroup mount points for process groups
+    chown system system /dev/cpuctl/cgroup.procs
+    chmod 0666 /dev/cpuctl/cgroup.procs
+
+    #smartisanOS Ext, for 3rd background app, more restrains
+    #bg_non_interactive is disabled by google, we add back br_3rd_app
+    #config as #bg_non_interactive, and even more loose to keep safe
+    mkdir /dev/cpuctl/bg_3rd_app
+    chown system system /dev/cpuctl/bg_3rd_app/tasks
+    chmod 0666 /dev/cpuctl/bg_3rd_app/tasks
+    chown system system /dev/cpuctl/bg_3rd_app/cgroup.procs
+    chmod 0666 /dev/cpuctl/bg_3rd_app/cgroup.procs
+    # 5 %
+    write /dev/cpuctl/bg_3rd_app/cpu.shares 52
+    #actually FIFO should not run in 3rd_bg_app
+    write /dev/cpuctl/bg_3rd_app/cpu.rt_period_us 1000000
+    #this value for bg_non_interactive is 10000 per cpu core
+    #a little bit large value just to be safe
+    write /dev/cpuctl/bg_3rd_app/cpu.rt_runtime_us 400000
+
+    mkdir /dev/cpuset/dex2oat
+    write /dev/cpuset/dex2oat/mems 0
+    chown system system /dev/cpuset/dex2oat
+    chown system system /dev/cpuset/dex2oat/tasks
+    chown system system /dev/cpuset/dex2oat/cgroup.procs
+    chmod 0666 /dev/cpuset/dex2oat/tasks
+    chmod 0666 /dev/cpuset/dex2oat/cgroup.procs
+
+    mkdir /dev/cpuset/foreground/boost
+    copy /dev/cpuset/cpus /dev/cpuset/foreground/boost/cpus
+    copy /dev/cpuset/mems /dev/cpuset/foreground/boost/mems
+
+    mkdir /dev/cpuset/bg_3rd_app
+    copy /dev/cpuset/cpus /dev/cpuset/bg_3rd_app/cpus
+    copy /dev/cpuset/mems /dev/cpuset/bg_3rd_app/mems
+
+    mkdir /dev/cpuset/audio-app
+    copy /dev/cpuset/cpus /dev/cpuset/audio-app/cpus
+    copy /dev/cpuset/mems /dev/cpuset/audio-app/mems
+
+    mkdir /dev/cpuset/smart-system
+    copy /dev/cpuset/cpus /dev/cpuset/smart-system/cpus
+    copy /dev/cpuset/mems /dev/cpuset/smart-system/mems
+    chown system system /dev/cpuset/smart-system
+    chown system system /dev/cpuset/smart-system/tasks
+    chown system system /dev/cpuset/smart-system/cgroup.procs
+
+    # change permissions for all cpusets we'll touch at runtime
+    chown system system /dev/cpuset/foreground/boost
+    chown system system /dev/cpuset/bg_3rd_app
+    chown system system /dev/cpuset/audio-app
+    chown system system /dev/cpuset/foreground/boost/tasks
+    chown system system /dev/cpuset/bg_3rd_app/tasks
+    chown system system /dev/cpuset/audio-app/tasks
+    chown system system /dev/cpuset/cgroup.procs
+    chown system system /dev/cpuset/foreground/cgroup.procs
+    chown system system /dev/cpuset/background/cgroup.procs
+    chown system system /dev/cpuset/bg_3rd_app/cgroup.procs
+    chown system system /dev/cpuset/system-background/cgroup.procs
+    chown system system /dev/cpuset/top-app/cgroup.procs
+    chown system system /dev/cpuset/audio-app/cgroup.procs
+
+    chmod 0664 /dev/cpuset/foreground/boost/tasks
+    chmod 0664 /dev/cpuset/bg_3rd_app/tasks
+    chmod 0664 /dev/cpuset/audio-app/tasks
+    chmod 0664 /dev/cpuset/foreground/cgroup.procs
+    chmod 0664 /dev/cpuset/background/cgroup.procs
+    chmod 0664 /dev/cpuset/bg_3rd_app/cgroup.procs
+    chmod 0664 /dev/cpuset/system-background/cgroup.procs
+    chmod 0664 /dev/cpuset/top-app/cgroup.procs
+    chmod 0664 /dev/cpuset/audio-app/cgroup.procs
+    chmod 0664 /dev/cpuset/cgroup.procs
