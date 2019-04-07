@@ -1,3 +1,6 @@
+# ADSP
+vendor/etc/scve/facereco/gModel.dat
+
 # Audio
 lib/android.hardware.audio@2.0.so
 lib/libaudiohal.so
@@ -5,6 +8,18 @@ lib/libaudioroute.so
 lib64/android.hardware.audio@2.0.so
 lib64/libaudiohal.so
 lib64/libaudioroute.so
+
+# Audio - ACDB
+vendor/etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb
+vendor/etc/acdbdata/MTP/MTP_Codec_cal.acdb
+vendor/etc/acdbdata/MTP/MTP_General_cal.acdb
+vendor/etc/acdbdata/MTP/MTP_Global_cal.acdb
+vendor/etc/acdbdata/MTP/MTP_Handset_cal.acdb
+vendor/etc/acdbdata/MTP/MTP_Hdmi_cal.acdb
+vendor/etc/acdbdata/MTP/MTP_Headset_cal.acdb
+vendor/etc/acdbdata/MTP/MTP_Speaker_cal.acdb
+vendor/etc/acdbdata/MTP/MTP_workspaceFile.qwsp
+vendor/etc/acdbdata/adsp_avs_config.acdb
 
 # Camera
 lib/libSNPE.so
@@ -34,6 +49,90 @@ lib/libsnpe_loader.so
 lib/libsymphony-cpu.so
 lib/libsymphonypower.so
 lib/libtt_panorama.so
+vendor/lib/camera/com.qti.sensor.imx318.so
+vendor/lib/camera/com.qti.sensor.imx350.so
+vendor/lib/camera/com.qti.sensor.imx362.so
+vendor/lib/camera/com.qti.sensor.imx363.so
+vendor/lib/camera/com.qti.sensor.ov12a10.so
+vendor/lib/camera/com.qti.sensor.ov13855.so
+vendor/lib/camera/com.qti.sensor.ov13880.so
+vendor/lib/camera/com.qti.sensor.ov8856.so
+vendor/lib/camera/com.qti.sensor.s5k2x7sp.so
+vendor/lib/camera/com.qti.sensormodule.ofilm_imx350.bin
+vendor/lib/camera/com.qti.sensormodule.ofilm_imx363.bin
+vendor/lib/camera/com.qti.sensormodule.ofilm_s5k2x7sp.bin
+vendor/lib/camera/com.qti.sensormodule.sunny_imx350.bin
+vendor/lib/camera/com.qti.sensormodule.sunny_imx363.bin
+vendor/lib/camera/com.qti.sensormodule.sunny_s5k2x7sp.bin
+vendor/lib/camera/com.qti.tuned.default.bin
+vendor/lib/camera/com.qti.tuned.ofilm_imx350.bin
+vendor/lib/camera/com.qti.tuned.ofilm_imx363.bin
+vendor/lib/camera/com.qti.tuned.ofilm_s5k2x7sp.bin
+vendor/lib/camera/com.qti.tuned.sunny_imx350.bin
+vendor/lib/camera/com.qti.tuned.sunny_imx363.bin
+vendor/lib/camera/com.qti.tuned.sunny_s5k2x7sp.bin
+vendor/lib/camera/fdconfigpreview.bin
+vendor/lib/camera/fdconfigpreviewlite.bin
+vendor/lib/camera/fdconfigvideo.bin
+vendor/lib/camera/fdconfigvideolite.bin
+vendor/lib/camera/imx258tuned.bin
+vendor/lib/camera/systemdefault.bin
+vendor/lib/hw/camera.qcom.so
+vendor/lib/hw/com.qti.chi.override.so
+vendor/lib/libSensorManagerHAL.so
+vendor/lib/libarcintegration.so
+vendor/lib/libcamxfdalgov7.so
+vendor/lib/libcamxfdengine.so
+vendor/lib/libcamxstatscore.so
+vendor/lib/libcamxtintlessalgo.so
+vendor/lib/libcdsprpc.so
+vendor/lib/libcom.qti.chinodeutils.so
+vendor/lib/libmms_gyro_vstab.so
+vendor/lib/libmms_gyro_vstab_auth.so
+vendor/lib/libmms_hal_vstab.so
+vendor/lib/libmms_warper_vstab.so
+vendor/lib64/libcamxfdalgov7.so
+vendor/lib64/libcamxfdengine.so
+vendor/lib64/libcamxstatscore.so
+vendor/lib64/libcdsprpc.so
+
+# Camera - components
+vendor/lib/camera/components/com.arcsoft.node.capturebokeh.so
+vendor/lib/camera/components/com.arcsoft.node.realtimebokeh.so
+vendor/lib/camera/components/com.inv.node.eis.so
+vendor/lib/camera/components/com.qti.eisv2.so
+vendor/lib/camera/components/com.qti.eisv3.so
+vendor/lib/camera/components/com.qti.hvx.addconstant.so
+vendor/lib/camera/components/com.qti.hvx.binning.so
+vendor/lib/camera/components/com.qti.node.arc_mfnr.so
+vendor/lib/camera/components/com.qti.node.dummyrtb.so
+vendor/lib/camera/components/com.qti.node.dummysat.so
+vendor/lib/camera/components/com.qti.node.eisv2.so
+vendor/lib/camera/components/com.qti.node.eisv3.so
+vendor/lib/camera/components/com.qti.node.gpu.so
+vendor/lib/camera/components/com.qti.node.memcpy.so
+vendor/lib/camera/components/com.qti.node.panorama.so
+vendor/lib/camera/components/com.qti.node.remosaic.so
+vendor/lib/camera/components/com.qti.node.smzslpreview.so
+vendor/lib/camera/components/com.qti.node.smzslsnapshot.so
+vendor/lib/camera/components/com.qti.node.snapshot_superzoom.so
+vendor/lib/camera/components/com.qti.node.stich.so
+vendor/lib/camera/components/com.qti.node.swregistration.so
+vendor/lib/camera/components/com.qti.node.tt_hdr.so
+vendor/lib/camera/components/com.qti.node.videozoom.so
+vendor/lib/camera/components/com.qti.stats.aec.so
+vendor/lib/camera/components/com.qti.stats.af.so
+vendor/lib/camera/components/com.qti.stats.afd.so
+vendor/lib/camera/components/com.qti.stats.asd.so
+vendor/lib/camera/components/com.qti.stats.awb.so
+vendor/lib/camera/components/com.qti.stats.awbwrapper.so
+vendor/lib/camera/components/com.qti.stats.pdlib.so
+vendor/lib/camera/components/com.qti.stats.pdlibsony.so
+vendor/lib/camera/components/com.qti.stats.pdlibwrapper.so
+vendor/lib/camera/components/com.qtistatic.stats.aec.so
+vendor/lib/camera/components/com.qtistatic.stats.af.so
+vendor/lib/camera/components/com.qtistatic.stats.awb.so
+vendor/lib/camera/components/com.qtistatic.stats.pdlib.so
 
 # Camera - etc
 etc/GyroOffset_db.config
@@ -44,6 +143,11 @@ etc/vstab_db_0_4k_video_30fps.config
 etc/vstab_db_0_720p_video_30fps.config
 etc/vstab_db_1_1080p_video_30fps.config
 etc/vstab_db_1_720p_video_30fps.config
+vendor/etc/camera/camxoverridesettings.txt
+vendor/etc/camera/megvii/model
+
+# Camera - firmware
+vendor/firmware/CAMERA_ICP.elf
 
 # CNE
 -priv-app/CNEService/CNEService.apk
@@ -76,9 +180,62 @@ lib64/libGPTEE_system.so
 lib64/libQTEEConnector_system.so
 lib64/vendor.qti.hardware.qteeconnector@1.0.so
 
+# Fingerprint - Goodix
+vendor/bin/hw/android.hardware.biometrics.goodixfingerprint@2.1-service
+vendor/etc/init/android.hardware.biometrics.goodixfingerprint@2.1-service.rc
+vendor/lib/libgf_ca.so
+vendor/lib/libgf_hal.so
+vendor/lib/libgoodixfingerprintd_binder.so
+vendor/lib/libgoodixhwfingerprint.so
+vendor/lib/vendor.goodix.hardware.fingerprintextension@1.0.so
+vendor/lib64/libgf_ca.so
+vendor/lib64/libgf_hal.so
+vendor/lib64/libgoodixfingerprintd_binder.so
+vendor/lib64/libgoodixhwfingerprint.so
+vendor/lib64/vendor.goodix.hardware.fingerprintextension@1.0.so
+
+# Fingerprint - Novatek
+vendor/bin/hw/android.hardware.biometrics.nvtfingerprint@2.1-service
+vendor/etc/init/android.hardware.biometrics.nvtfingerprint@2.1-service.rc
+vendor/lib/com.novatek.fingerprint@1.0_vendor.so
+vendor/lib/hw/nvtfingerprint.default.so
+vendor/lib/libfpr_ca.so
+vendor/lib/libfpr_library.so
+vendor/lib64/com.novatek.fingerprint@1.0_vendor.so
+vendor/lib64/hw/nvtfingerprint.default.so
+vendor/lib64/libfpr_ca.so
+vendor/lib64/libfpr_library.so
+
 # Graphics
 lib/libsdm-disp-apis.so
 lib64/libsdm-disp-apis.so
+
+# Graphics - firmware
+vendor/firmware/a225_pfp.fw
+vendor/firmware/a225_pm4.fw
+vendor/firmware/a225p5_pm4.fw
+vendor/firmware/a300_pfp.fw
+vendor/firmware/a300_pm4.fw
+vendor/firmware/a330_pfp.fw
+vendor/firmware/a330_pm4.fw
+vendor/firmware/a420_pfp.fw
+vendor/firmware/a420_pm4.fw
+vendor/firmware/a530_gpmu.fw2
+vendor/firmware/a530_pfp.fw
+vendor/firmware/a530_pm4.fw
+vendor/firmware/a530v1_pfp.fw
+vendor/firmware/a530v1_pm4.fw
+vendor/firmware/a530v2_seq.fw2
+vendor/firmware/a530v3_gpmu.fw2
+vendor/firmware/a530v3_seq.fw2
+vendor/firmware/a540_gpmu.fw2
+vendor/firmware/a630_gmu.bin
+vendor/firmware/a630_sqe.fw
+vendor/firmware/a630_zap.b00
+vendor/firmware/a630_zap.b01
+vendor/firmware/a630_zap.b02
+vendor/firmware/a630_zap.elf
+vendor/firmware/a630_zap.mdt
 
 # IFAA
 # -app/ifaa_service/ifaa_service.apk
@@ -95,6 +252,12 @@ lib/vendor.qti.hardware.iop@1.0.so
 lib/vendor.qti.hardware.iop@2.0.so
 lib64/vendor.qti.hardware.iop@1.0.so
 lib64/vendor.qti.hardware.iop@2.0.so
+
+# Logic volume
+vendor/bin/dm-tool
+vendor/bin/logic_volume
+vendor/etc/logic_volume.conf
+vendor/etc/init/logic_volume.rc
 
 # Media
 lib/libmmosal.so
@@ -113,6 +276,17 @@ lib64/libqti_performance.so
 lib64/vendor.qti.hardware.factory@1.0.so
 lib64/vendor.qti.hardware.limits@1.0.so
 lib64/vendor.qti.hardware.perf@1.0.so
+vendor/etc/perf/perf-profile0.conf
+vendor/etc/perf/perf-profile1.conf
+vendor/etc/perf/perf-profile2.conf
+vendor/etc/perf/perf-profile3.conf
+vendor/etc/perf/perf-profile4.conf
+vendor/etc/perf/perf-profile5.conf
+vendor/etc/perf/perf-profile6.conf
+vendor/etc/perf/perf-profile7.conf
+vendor/etc/perf/perf-profile8.conf
+vendor/etc/perf/perf-profile9.conf
+vendor/etc/perf/perf-profile10.conf
 
 # QMI
 etc/permissions/qti_libpermissions.xml
@@ -250,6 +424,79 @@ lib64/libqti-util_system.so
 lib64/libsensorslog.so
 lib64/libsnsdiaglog.so
 lib64/libssc.so
+vendor/bin/sensors.qcom
+vendor/etc/sap.conf
+vendor/etc/sensors/config/ak991x_dri_0.json
+vendor/etc/sensors/config/bme680_0.json
+vendor/etc/sensors/config/bmi160_0.json
+vendor/etc/sensors/config/bmp285_0.json
+vendor/etc/sensors/config/bu52272nuz_0.json
+vendor/etc/sensors/config/cm3526_0.json
+vendor/etc/sensors/config/config_list.txt
+vendor/etc/sensors/config/icm206xx_0.json
+vendor/etc/sensors/config/ltr308_0_on_change.json
+vendor/etc/sensors/config/mmc5603nj_0.json
+vendor/etc/sensors/config/qcs605_bmi160_0.json
+vendor/etc/sensors/config/sdm845_2p5K_tmx4903.json
+vendor/etc/sensors/config/sdm845_4K_tmx4903.json
+vendor/etc/sensors/config/sdm845_ak991x_0.json
+vendor/etc/sensors/config/sdm845_bme680_0.json
+vendor/etc/sensors/config/sdm845_bmi160_0.json
+vendor/etc/sensors/config/sdm845_bmp285_0.json
+vendor/etc/sensors/config/sdm845_bu52272nuz_0.json
+vendor/etc/sensors/config/sdm845_cm3526_0.json
+vendor/etc/sensors/config/sdm845_icm206xx_0.json
+vendor/etc/sensors/config/sdm845_mmc5603nj_0.json
+vendor/etc/sensors/config/sdm845_power_0.json
+vendor/etc/sensors/config/sdm845_shtw2_0.json
+vendor/etc/sensors/config/sdm845_tmx4903.json
+vendor/etc/sensors/config/sdm845_tsl258x.json
+vendor/etc/sensors/config/shtw2_0.json
+vendor/etc/sensors/config/smartisan_housing_color.json
+vendor/etc/sensors/config/sns_amd.json
+vendor/etc/sensors/config/sns_basic_gestures.json
+vendor/etc/sensors/config/sns_bring_to_ear.json
+vendor/etc/sensors/config/sns_cm.json
+vendor/etc/sensors/config/sns_device_orient.json
+vendor/etc/sensors/config/sns_diag_filter.json
+vendor/etc/sensors/config/sns_distance_bound.json
+vendor/etc/sensors/config/sns_dpc.json
+vendor/etc/sensors/config/sns_facing.json
+vendor/etc/sensors/config/sns_fmv.json
+vendor/etc/sensors/config/sns_geomag_rv.json
+vendor/etc/sensors/config/sns_gyro_cal.json
+vendor/etc/sensors/config/sns_mag_cal.json
+vendor/etc/sensors/config/sns_multishake.json
+vendor/etc/sensors/config/sns_oem1.json
+vendor/etc/sensors/config/sns_pedometer.json
+vendor/etc/sensors/config/sns_rmd.json
+vendor/etc/sensors/config/sns_rotv.json
+vendor/etc/sensors/config/sns_smd.json
+vendor/etc/sensors/config/sns_tilt.json
+vendor/etc/sensors/config/sns_tilt_to_wake.json
+vendor/etc/sensors/config/tmx4903.json
+vendor/etc/sensors/config/tsl258x.json
+vendor/etc/sensors/hals.conf
+vendor/lib/libsdsprpc.so
+vendor/lib/libsensorcal.so
+vendor/lib/libsensorslog.so
+vendor/lib/libssc_default_listener.so
+vendor/lib/sensors.ssc.so
+vendor/lib64/libsdsprpc.so
+vendor/lib64/libsensorcal.so
+vendor/lib64/libsensorslog.so
+vendor/lib64/libsmartisan_cjson.so
+vendor/lib64/libssc_default_listener.so
+vendor/lib64/sensors.ssc.so
 
-# Wi-Fi
-lib64/android.hardware.wifi.supplicant@1.0.so
+# Thermal
+vendor/etc/thermal-engine-845.conf
+vendor/etc/thermal-engine.conf
+
+# Vibrator
+vendor/bin/hw/android.hardware.vibrator@1.0-service
+vendor/etc/init/android.hardware.vibrator@1.0-service.rc
+vendor/lib/hw/android.hardware.vibrator@1.0-impl.so
+vendor/lib/hw/vibrator.default.so:vendor/lib/hw/vibrator.sdm845.so
+vendor/lib64/hw/android.hardware.vibrator@1.0-impl.so
+vendor/lib64/hw/vibrator.default.so:vendor/lib64/hw/vibrator.sdm845.so
