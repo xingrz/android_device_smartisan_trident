@@ -162,6 +162,8 @@ lib64/librcc.so
 lib64/vendor.qti.imsrtpservice@1.0.so
 
 # Sensor
+etc/elliptic_fusion_sensor.xml
+etc/elliptic_sensor.xml
 etc/sensors/proto/descriptor.proto
 etc/sensors/proto/nanopb.proto
 etc/sensors/proto/qti_gravity.proto
@@ -243,6 +245,7 @@ lib/libsensorslog.so
 lib/libsnsdiaglog.so
 lib/libssc.so
 lib64/libSMTSensorCalLibNative.so
+lib64/libnotifyaudiohal.so
 lib64/libqti-util_system.so
 lib64/libsensorslog.so
 lib64/libsnsdiaglog.so
