@@ -180,6 +180,19 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1
 
+# GPS
+PRODUCT_PACKAGES += \
+    android.hardware.gnss@1.0-impl-qti \
+    android.hardware.gnss@1.0-service-qti \
+    libgnss \
+    libgnsspps \
+    libgps.utils \
+    libloc_core \
+    liblocation_api
+
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/gps/etc,$(TARGET_COPY_OUT_VENDOR)/etc)
+
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health@1.0-impl \
