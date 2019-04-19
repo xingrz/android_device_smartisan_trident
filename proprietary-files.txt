@@ -519,3 +519,6 @@ vendor/lib/hw/android.hardware.vibrator@1.0-impl.so
 vendor/lib/hw/vibrator.default.so:vendor/lib/hw/vibrator.sdm845.so
 vendor/lib64/hw/android.hardware.vibrator@1.0-impl.so
 vendor/lib64/hw/vibrator.default.so:vendor/lib64/hw/vibrator.sdm845.so
+
+# Wi-Fi
+vendor/lib/modules/qca_cld3_wlan.ko
