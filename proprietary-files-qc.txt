@@ -106,9 +106,7 @@ vendor/lib64/hw/com.qualcomm.qti.bluetooth_audio@1.0-impl.so
 vendor/lib64/vendor.qti.hardware.fm@1.0_vendor.so
 
 # Boot control
-vendor/lib/hw/bootctrl.sdm845.so
 vendor/lib/librecovery_updater_msm.so
-vendor/lib64/hw/bootctrl.sdm845.so
 vendor/lib64/librecovery_updater_msm.so
 
 # Charger
