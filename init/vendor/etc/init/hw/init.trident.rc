@@ -39,8 +39,8 @@ on boot
     chmod 0666 /sys/devices/platform/soc/soc\:qcom,dsi-display@18/msm_fb_ie_level
     chown system system /sys/devices/platform/soc/soc\:qcom,dsi-display@18/panel_power_control
     chmod 0666 /sys/devices/platform/soc/soc\:qcom,dsi-display@18/panel_power_control
-    chmod 0666 system system /sys/bus/i2c/devices/14-004b/synaptics_tcm.0/synaptics_tcm/prs_en
     chown system system /sys/bus/i2c/devices/14-004b/synaptics_tcm.0/synaptics_tcm/prs_en
+    chmod 0666 /sys/bus/i2c/devices/14-004b/synaptics_tcm.0/synaptics_tcm/prs_en
     chmod 0644 /sys/class/dual_role_usb/otg_default/data_role
     chmod 0666 /sys/devices/platform/soc/ae90000.qcom,dp_display/dp_ctrl_status
 
