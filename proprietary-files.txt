@@ -506,6 +506,7 @@ vendor/lib64/libsensorcal.so
 vendor/lib64/libsensorslog.so
 vendor/lib64/libsmartisan_cjson.so
 vendor/lib64/libssc_default_listener.so
+vendor/lib64/sensors.elliptic.so
 vendor/lib64/sensors.ssc.so
 
 # Thermal
