@@ -434,12 +434,14 @@ lib/libSMTSensorCalLibNative.so
 lib/libSuperSensor.so
 lib/libSuperSensorCPU.so
 lib/libqti-util_system.so
+lib/libsdsprpc_system.so
 lib/libsensorslog.so
 lib/libsnsdiaglog.so
 lib/libssc.so
 lib64/libSMTSensorCalLibNative.so
 lib64/libnotifyaudiohal.so
 lib64/libqti-util_system.so
+lib64/libsdsprpc_system.so
 lib64/libsensorslog.so
 lib64/libsnsdiaglog.so
 lib64/libssc.so
