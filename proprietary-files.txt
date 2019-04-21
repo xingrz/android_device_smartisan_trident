@@ -207,6 +207,14 @@ lib64/libcalibration_jni.so
 # DRM
 vendor/lib/liboemcrypto.so
 
+# Fingerprint - FPC
+vendor/bin/hw/android.hardware.biometrics.fpcfingerprint@2.1-service
+vendor/etc/init/android.hardware.biometrics.fpcfingerprint@2.1-service.rc
+vendor/etc/permissions/com.fingerprints.extension.xml
+vendor/framework/com.fingerprints.extension.jar
+vendor/lib/com.fingerprints.extension@1.0.so
+vendor/lib64/com.fingerprints.extension@1.0.so
+
 # Fingerprint - Goodix
 vendor/bin/hw/android.hardware.biometrics.goodixfingerprint@2.1-service
 vendor/etc/init/android.hardware.biometrics.goodixfingerprint@2.1-service.rc
