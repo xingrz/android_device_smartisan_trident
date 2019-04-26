@@ -2,5 +2,9 @@
   {
     "repository": "android_vendor_smartisan_trident",
     "target_path": "vendor/smartisan/trident"
+  },
+  {
+    "repository": "android_kernel_smartisan_sdm845",
+    "target_path": "kernel/smartisan/sdm845"
   }
 ]
