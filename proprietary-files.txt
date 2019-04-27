@@ -133,7 +133,6 @@ vendor/lib/libcamxfdalgov7.so
 vendor/lib/libcamxfdengine.so
 vendor/lib/libcamxstatscore.so
 vendor/lib/libcamxtintlessalgo.so
-vendor/lib/libcdsprpc.so
 vendor/lib/libcom.qti.chinodeutils.so
 vendor/lib/libmms_gyro_vstab.so
 vendor/lib/libmms_gyro_vstab_auth.so
@@ -142,7 +141,6 @@ vendor/lib/libmms_warper_vstab.so
 vendor/lib64/libcamxfdalgov7.so
 vendor/lib64/libcamxfdengine.so
 vendor/lib64/libcamxstatscore.so
-vendor/lib64/libcdsprpc.so
 
 # Camera - components
 vendor/lib/camera/components/com.arcsoft.node.capturebokeh.so
@@ -457,7 +455,6 @@ lib/libSMTSensorCalLibNative.so
 lib/libSuperSensor.so
 lib/libSuperSensorCPU.so
 lib/libqti-util_system.so
-lib/libsdsprpc_system.so
 lib/libsensorslog.so
 lib/libsns_low_lat_stream_stub.so
 lib/libsnsdiaglog.so
@@ -465,7 +462,6 @@ lib/libssc.so
 lib64/libSMTSensorCalLibNative.so
 lib64/libnotifyaudiohal.so
 lib64/libqti-util_system.so
-lib64/libsdsprpc_system.so
 lib64/libsensorslog.so
 lib64/libsns_low_lat_stream_stub.so
 lib64/libsnsdiaglog.so
