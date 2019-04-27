@@ -542,9 +542,16 @@ vendor/etc/thermal-engine.conf
 vendor/lib/modules/qca_cld3_wlan.ko
 
 # WiPower
+-priv-app/a4wpservice/a4wpservice.apk
+-priv-app/wipowerservice/wipowerservice.apk
+etc/permissions/android.wipower.xml
 etc/permissions/com.quicinc.wbc.xml
 etc/permissions/com.quicinc.wbcservice.xml
+framework/android.wipower.jar
 framework/com.quicinc.wbc.jar
 framework/com.quicinc.wbcservice.jar
+lib/libwipower_jni.so
+lib64/libwipower_jni.so
+vendor/bin/wipowerd
 vendor/lib/vendor.qti.hardware.wipower@1.0_vendor.so
 vendor/lib64/vendor.qti.hardware.wipower@1.0_vendor.so
