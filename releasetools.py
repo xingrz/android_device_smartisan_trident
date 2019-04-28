@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import common
 import re
 
 def FullOTA_Assertions(info):
@@ -23,6 +24,14 @@ def IncrementalOTA_Assertions(info):
   AddModemAssertion(info)
   return
 
+def FullOTA_InstallEnd(info):
+  OTA_InstallEnd(info)
+  return
+
+def IncrementalOTA_InstallEnd(info):
+  OTA_InstallEnd(info)
+  return
+
 def AddModemAssertion(info):
   android_info = info.input_zip.read("OTA/android-info.txt")
   m = re.search(r'require\s+version-modem\s*=\s*(.+)', android_info)
@@ -31,4 +40,16 @@ def AddModemAssertion(info):
     if len(version) and '*' not in version:
       cmd = 'assert(trident.verify_modem("' + version + '") == "1");'
       info.script.AppendExtra(cmd)
+  return
+
+def AddImage(info, basename, dest):
+  name = basename
+  data = info.input_zip.read("IMAGES/" + basename)
+  common.ZipWriteStr(info.output_zip, name, data)
+  info.script.AppendExtra('package_extract_file("%s", "%s");' % (name, dest))
+
+def OTA_InstallEnd(info):
+  info.script.Print("Patching firmware images...")
+  AddImage(info, "vbmeta.img", "/dev/block/bootdevice/by-name/vbmeta")
+  AddImage(info, "dtbo.img", "/dev/block/bootdevice/by-name/dtbo")
   return
