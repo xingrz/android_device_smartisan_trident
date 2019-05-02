@@ -87,8 +87,7 @@ AB_OTA_PARTITIONS += \
     boot \
     dtbo \
     system \
-    vendor \
-    vbmeta
+    vendor
 
 AB_OTA_POSTINSTALL_CONFIG += \
     FILESYSTEM_TYPE_system=ext4 \
