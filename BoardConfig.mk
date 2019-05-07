@@ -65,6 +65,16 @@ NEED_KERNEL_MODULE_SYSTEM := true
 # HAX: SELinux Permissive - Remove ASAP
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
+# A/B
+AB_OTA_UPDATER := true
+
+AB_OTA_PARTITIONS += \
+    boot \
+    dtbo \
+    system \
+    vendor \
+    vbmeta
+
 # Audio
 USE_DEVICE_SPECIFIC_AUDIO := true
 USE_XML_AUDIO_POLICY_CONF := 1
