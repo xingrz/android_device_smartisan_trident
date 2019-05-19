@@ -354,7 +354,7 @@ lib64/vendor.qti.hardware.ifaa@1.0.so
 vendor/bin/dm-tool
 vendor/bin/logic_volume
 vendor/etc/logic_volume.conf
-vendor/etc/init/logic_volume.rc
+vendor/etc/init/logic_volume.rc|beafa018e16eb11ded6f78716024bdf82b11022e
 
 # Perf
 vendor/etc/perf/perf-profile0.conf
