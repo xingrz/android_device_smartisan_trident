@@ -540,9 +540,6 @@ vendor/lib64/sensors.ssc.so
 vendor/etc/thermal-engine-845.conf
 vendor/etc/thermal-engine.conf
 
-# Wi-Fi
-vendor/lib/modules/qca_cld3_wlan.ko
-
 # WiPower
 -priv-app/a4wpservice/a4wpservice.apk
 -priv-app/wipowerservice/wipowerservice.apk
