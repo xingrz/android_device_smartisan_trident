@@ -242,14 +242,6 @@ PRODUCT_PACKAGES += \
     vendor.mokee.livedisplay@2.0-service-sdm
 
 # Media
-PRODUCT_PACKAGES += \
-    libc2dcolorconvert \
-    libOmxCore \
-    libOmxVdec \
-    libOmxVenc \
-    libplatformconfig \
-    libstagefrighthw
-
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/media,$(TARGET_COPY_OUT_VENDOR)/etc) \
     $(LOCAL_PATH)/media/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml
