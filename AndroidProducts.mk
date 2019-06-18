@@ -15,4 +15,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/mk_trident.mk
+    $(LOCAL_DIR)/omni_trident.mk

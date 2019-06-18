@@ -21,9 +21,9 @@ PRODUCT_RELEASE_NAME := trident
 $(call inherit-product, build/target/product/embedded.mk)
 
 # Inherit some common MK stuff.
-$(call inherit-product, vendor/mk/config/common.mk)
+$(call inherit-product, vendor/omni/config/common.mk)
 
-PRODUCT_NAME := mk_trident
+PRODUCT_NAME := omni_trident
 PRODUCT_BRAND := SMARTISAN
 PRODUCT_DEVICE := trident
 PRODUCT_MANUFACTURER := smartisan

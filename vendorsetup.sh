@@ -1,0 +1,2 @@
+add_lunch_combo omni_trident-eng
+add_lunch_combo omni_trident-userdebug
