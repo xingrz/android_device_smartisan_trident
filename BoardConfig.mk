@@ -56,7 +56,11 @@ BOARD_RAMDISK_OFFSET := 0x01000000
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_SEPARATED_DTBO := true
 
-TARGET_PREBUILT_KERNEL := device/smartisan/trident/prebuilt/Image.gz-dtb
+TARGET_KERNEL_ARCH := arm64
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
+TARGET_KERNEL_HEADER_ARCH := arm64
+TARGET_KERNEL_SOURCE := kernel/smartisan/sdm845
+TARGET_KERNEL_CONFIG := mokee_trident_defconfig
 
 BOARD_MKBOOTIMG_ARGS += \
     --os_patch_level 2018-07-00
