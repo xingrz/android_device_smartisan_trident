@@ -56,8 +56,6 @@ TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/smartisan/sdm845
 TARGET_KERNEL_CONFIG := mokee_trident_defconfig
 
-NEED_KERNEL_MODULE_SYSTEM := true
-
 # HAX: SELinux Permissive - Remove ASAP
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
