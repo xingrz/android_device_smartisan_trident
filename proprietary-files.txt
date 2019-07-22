@@ -32,12 +32,6 @@ lib/libaudioroute.so
 lib64/android.hardware.audio@2.0.so
 lib64/libaudiohal.so
 lib64/libaudioroute.so
-vendor/lib/hw/android.hardware.audio@2.0-impl.so
-vendor/lib/hw/audio.primary.sdm845.so
-vendor/lib/libaudio_log_utils.so
-vendor/lib64/hw/android.hardware.audio@2.0-impl.so
-vendor/lib64/hw/audio.primary.sdm845.so
-vendor/lib64/libaudio_log_utils.so
 
 # Audio - ACDB
 vendor/etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb

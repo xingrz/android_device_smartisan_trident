@@ -62,7 +62,6 @@ NEED_KERNEL_MODULE_SYSTEM := true
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 # Audio
-USE_DEVICE_SPECIFIC_AUDIO := true
 USE_XML_AUDIO_POLICY_CONF := 1
 
 # Bluetooth
