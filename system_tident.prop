@@ -72,3 +72,6 @@ persist.usbalsa.waittimems=10000
 
 # Enable HAL3
 persist.camera.HAL3.enabled=1
+
+# Fix Bilibili
+debug.hwui.use_buffer_age=false
