@@ -69,3 +69,6 @@ ro.logd.kernel=true
 persist.smartisan.linelimit=false
 #Identify usb device time
 persist.usbalsa.waittimems=10000
+
+# Enable HAL3
+persist.camera.HAL3.enabled=1
