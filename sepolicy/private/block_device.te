@@ -1,2 +1,0 @@
-type ramdump_block_device, dev_type;
-type sec_block_device, dev_type;
