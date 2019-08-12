@@ -80,8 +80,6 @@ lib/libarcsoft_picselfie_algorithm.so
 lib/libarcsoft_refocus_sm.so
 lib/libarcsoft_smart_denoise.so
 lib/libbeauty_momo_sm.so
-lib/libcamera_client.so|4e283b7f190a2946b4848bea55bea49cbc66b31b
-lib/libcameraservice.so|f07b98f6d5891c6e55229aa44106590d51734d9f
 lib/libgnustl_shared.so
 lib/libimgcmp_jni.so
 lib/libmegface-new.so
