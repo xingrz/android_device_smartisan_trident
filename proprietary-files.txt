@@ -65,10 +65,6 @@ vendor/lib/modules/swr-wcd-ctrl.ko
 vendor/lib/modules/wcd-core.ko
 vendor/lib/modules/wcd-dsp-glink.ko
 
-# Boot control
-vendor/lib/librecovery_updater_msm.so
-vendor/lib64/librecovery_updater_msm.so
-
 # Camera
 lib/libSNPE.so
 lib/libarcsoft_beautyshot.so
