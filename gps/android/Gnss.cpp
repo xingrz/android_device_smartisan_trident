@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2017-2018, The Linux Foundation. All rights reserved.
  * Not a Contribution
  */
 /*
@@ -20,10 +20,14 @@
 
 #define LOG_TAG "LocSvc_GnssInterface"
 
+#include <fstream>
 #include <log_util.h>
 #include <dlfcn.h>
+#include <cutils/properties.h>
 #include "Gnss.h"
-typedef void* (getLocationInterface)();
+#include <LocationUtil.h>
+
+typedef const GnssInterface* (getLocationInterface)();
 
 namespace android {
 namespace hardware {
@@ -80,7 +84,7 @@ GnssAPIClient* Gnss::getApi() {
     return mApi;
 }
 
-GnssInterface* Gnss::getGnssInterface() {
+const GnssInterface* Gnss::getGnssInterface() {
     static bool getGnssInterfaceFailed = false;
     if (nullptr == mGnssInterface && !getGnssInterfaceFailed) {
         LOC_LOGD("%s]: loading libgnss.so::getGnssInterface ...", __func__);
@@ -101,13 +105,13 @@ GnssInterface* Gnss::getGnssInterface() {
         if (NULL == getter) {
             getGnssInterfaceFailed = true;
         } else {
-            mGnssInterface = (GnssInterface*)(*getter)();
+            mGnssInterface = (const GnssInterface*)(*getter)();
         }
     }
     return mGnssInterface;
 }
 
-Return<bool> Gnss::setCallback(const sp<IGnssCallback>& callback)  {
+Return<bool> Gnss::setCallback(const sp<V1_0::IGnssCallback>& callback)  {
     ENTRY_LOG_CALLFLOW();
     if (mGnssCbIface != nullptr) {
         mGnssCbIface->unlinkToDeath(mGnssDeathRecipient);
@@ -230,7 +234,7 @@ Return<bool> Gnss::injectLocation(double latitudeDegrees,
                                   double longitudeDegrees,
                                   float accuracyMeters)  {
     ENTRY_LOG_CALLFLOW();
-    GnssInterface* gnssInterface = getGnssInterface();
+    const GnssInterface* gnssInterface = getGnssInterface();
     if (nullptr != gnssInterface) {
         gnssInterface->injectLocation(latitudeDegrees, longitudeDegrees, accuracyMeters);
         return true;
@@ -242,7 +246,7 @@ Return<bool> Gnss::injectLocation(double latitudeDegrees,
 Return<bool> Gnss::injectTime(int64_t timeMs, int64_t timeReferenceMs,
                               int32_t uncertaintyMs) {
     ENTRY_LOG_CALLFLOW();
-    GnssInterface* gnssInterface = getGnssInterface();
+    const GnssInterface* gnssInterface = getGnssInterface();
     if (nullptr != gnssInterface) {
         gnssInterface->injectTime(timeMs, timeReferenceMs, uncertaintyMs);
         return true;
@@ -251,7 +255,7 @@ Return<bool> Gnss::injectTime(int64_t timeMs, int64_t timeReferenceMs,
     }
 }
 
-Return<void> Gnss::deleteAidingData(IGnss::GnssAidingData aidingDataFlags)  {
+Return<void> Gnss::deleteAidingData(V1_0::IGnss::GnssAidingData aidingDataFlags)  {
     ENTRY_LOG_CALLFLOW();
     GnssAPIClient* api = getApi();
     if (api) {
@@ -260,8 +264,8 @@ Return<void> Gnss::deleteAidingData(IGnss::GnssAidingData aidingDataFlags)  {
     return Void();
 }
 
-Return<bool> Gnss::setPositionMode(IGnss::GnssPositionMode mode,
-                                   IGnss::GnssPositionRecurrence recurrence,
+Return<bool> Gnss::setPositionMode(V1_0::IGnss::GnssPositionMode mode,
+                                   V1_0::IGnss::GnssPositionRecurrence recurrence,
                                    uint32_t minIntervalMs,
                                    uint32_t preferredAccuracyMeters,
                                    uint32_t preferredTimeMs)  {
@@ -275,55 +279,56 @@ Return<bool> Gnss::setPositionMode(IGnss::GnssPositionMode mode,
     return retVal;
 }
 
-Return<sp<IAGnss>> Gnss::getExtensionAGnss()  {
+Return<sp<V1_0::IAGnss>> Gnss::getExtensionAGnss()  {
     ENTRY_LOG_CALLFLOW();
     mAGnssIface = new AGnss(this);
     return mAGnssIface;
 }
 
-Return<sp<IGnssNi>> Gnss::getExtensionGnssNi()  {
+Return<sp<V1_0::IGnssNi>> Gnss::getExtensionGnssNi()  {
     ENTRY_LOG_CALLFLOW();
     mGnssNi = new GnssNi(this);
     return mGnssNi;
 }
 
-Return<sp<IGnssMeasurement>> Gnss::getExtensionGnssMeasurement() {
+Return<sp<V1_0::IGnssMeasurement>> Gnss::getExtensionGnssMeasurement() {
     ENTRY_LOG_CALLFLOW();
-    mGnssMeasurement = new GnssMeasurement();
+    if (mGnssMeasurement == nullptr)
+        mGnssMeasurement = new GnssMeasurement();
     return mGnssMeasurement;
 }
 
-Return<sp<IGnssConfiguration>> Gnss::getExtensionGnssConfiguration()  {
+Return<sp<V1_0::IGnssConfiguration>> Gnss::getExtensionGnssConfiguration()  {
     ENTRY_LOG_CALLFLOW();
     mGnssConfig = new GnssConfiguration(this);
     return mGnssConfig;
 }
 
-Return<sp<IGnssGeofencing>> Gnss::getExtensionGnssGeofencing()  {
+Return<sp<V1_0::IGnssGeofencing>> Gnss::getExtensionGnssGeofencing()  {
     ENTRY_LOG_CALLFLOW();
     mGnssGeofencingIface = new GnssGeofencing();
     return mGnssGeofencingIface;
 }
 
-Return<sp<IGnssBatching>> Gnss::getExtensionGnssBatching()  {
+Return<sp<V1_0::IGnssBatching>> Gnss::getExtensionGnssBatching()  {
     mGnssBatching = new GnssBatching();
     return mGnssBatching;
 }
 
-Return<sp<IGnssDebug>> Gnss::getExtensionGnssDebug() {
+Return<sp<V1_0::IGnssDebug>> Gnss::getExtensionGnssDebug() {
     ENTRY_LOG_CALLFLOW();
     mGnssDebug = new GnssDebug(this);
     return mGnssDebug;
 }
 
-Return<sp<IAGnssRil>> Gnss::getExtensionAGnssRil() {
+Return<sp<V1_0::IAGnssRil>> Gnss::getExtensionAGnssRil() {
     mGnssRil = new AGnssRil(this);
     return mGnssRil;
 }
 
-IGnss* HIDL_FETCH_IGnss(const char* hal) {
+V1_0::IGnss* HIDL_FETCH_IGnss(const char* hal) {
     ENTRY_LOG_CALLFLOW();
-    IGnss* iface = nullptr;
+    V1_0::IGnss* iface = nullptr;
     iface = new Gnss();
     if (iface == nullptr) {
         LOC_LOGE("%s]: failed to get %s", __FUNCTION__, hal);

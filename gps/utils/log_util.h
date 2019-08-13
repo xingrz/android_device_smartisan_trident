@@ -37,13 +37,14 @@
 #elif defined (USE_GLIB)
 // LE targets with no logcat support
 #include <stdio.h>
+#include <string.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <cutils/log.h>
 
 #ifndef LOG_TAG
 #define LOG_TAG "GPS_UTILS"
-
-#endif  // LOG_TAG
+#endif /* LOG_TAG */
 
 #endif /* #if defined (USE_ANDROID_LOGGING) || defined (ANDROID) */
 
@@ -140,6 +141,7 @@ extern char* get_timestamp(char* str, unsigned long buf_size);
 #define LOC_LOG_HEAD(fmt) "%s:%d] " fmt
 #define LOC_LOGv(fmt,...) LOC_LOGV(LOC_LOG_HEAD(fmt), __FUNCTION__, __LINE__, ##__VA_ARGS__)
 #define LOC_LOGw(fmt,...) LOC_LOGW(LOC_LOG_HEAD(fmt), __FUNCTION__, __LINE__, ##__VA_ARGS__)
+#define LOC_LOGi(fmt,...) LOC_LOGI(LOC_LOG_HEAD(fmt), __FUNCTION__, __LINE__, ##__VA_ARGS__)
 #define LOC_LOGd(fmt,...) LOC_LOGD(LOC_LOG_HEAD(fmt), __FUNCTION__, __LINE__, ##__VA_ARGS__)
 #define LOC_LOGe(fmt,...) LOC_LOGE(LOC_LOG_HEAD(fmt), __FUNCTION__, __LINE__, ##__VA_ARGS__)
 
