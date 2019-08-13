@@ -163,18 +163,13 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@2.0-impl \
     android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service \
-    gralloc.sdm845 \
-    hwcomposer.sdm845 \
     memtrack.sdm845 \
     libdisplayconfig \
     libdrm \
     libdrm.vendor \
-    libqdMetaData \
     libqdMetaData.system \
     libtinyxml \
-    libvulkan \
-    vendor.display.config@1.0.vendor \
-    vendor.display.config@1.1.vendor
+    libvulkan
 
 # DRM
 PRODUCT_PACKAGES += \

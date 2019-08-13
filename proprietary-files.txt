@@ -283,6 +283,26 @@ vendor/bin/hvdcp_opti
 # Display
 lib/libcalibration_jni.so
 lib64/libcalibration_jni.so
+vendor/lib/hw/gralloc.sdm845.so
+vendor/lib/hw/hwcomposer.sdm845.so
+vendor/lib/libdrmutils.so
+vendor/lib/libgrallocutils.so
+vendor/lib/libqdMetaData.so
+vendor/lib/libqdutils.so
+vendor/lib/libsdmcore.so
+vendor/lib/libsdmutils.so
+vendor/lib/vendor.display.config@1.0_vendor.so
+vendor/lib/vendor.display.config@1.1_vendor.so
+vendor/lib64/hw/gralloc.sdm845.so
+vendor/lib64/hw/hwcomposer.sdm845.so
+vendor/lib64/libdrmutils.so
+vendor/lib64/libgrallocutils.so
+vendor/lib64/libqdMetaData.so
+vendor/lib64/libqdutils.so
+vendor/lib64/libsdmcore.so
+vendor/lib64/libsdmutils.so
+vendor/lib64/vendor.display.config@1.0_vendor.so
+vendor/lib64/vendor.display.config@1.1_vendor.so
 
 # DRM
 lib/libGPTEE_system.so
