@@ -153,10 +153,6 @@ on boot
     # Add ultrasound calibration dir
     mkdir /persist/audio 0777 system system
 
-    # Load WLAN driver
-    insmod /vendor/lib/modules/qca_cld3_wlan.ko
-    setprop wlan.driver.status "ok"
-
     # Wifi firmware reload path
     chown wifi wifi /sys/module/wlan/parameters/fwpath
 

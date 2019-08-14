@@ -907,7 +907,6 @@ vendor/lib64/libthermalclient.so
 vendor/bin/time_daemon
 
 # Wi-Fi
-vendor/lib/modules/qca_cld3_wlan.ko
 vendor/bin/cnss-daemon
 vendor/bin/cnss_diag
 
