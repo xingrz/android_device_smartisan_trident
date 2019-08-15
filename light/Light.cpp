@@ -23,6 +23,10 @@
 namespace {
 using android::hardware::light::V2_0::LightState;
 
+static constexpr int RAMP_SIZE = 8;
+static constexpr int RAMP_STEP_DURATION = 50;
+
+static constexpr int BRIGHTNESS_RAMP[RAMP_SIZE] = {0, 12, 25, 37, 50, 72, 85, 100};
 static constexpr int DEFAULT_MAX_BRIGHTNESS = 255;
 
 static uint32_t rgbToBrightness(const LightState& state) {
@@ -34,6 +38,18 @@ static uint32_t rgbToBrightness(const LightState& state) {
 static bool isLit(const LightState& state) {
     return (state.color & 0x00ffffff);
 }
+
+static std::string getScaledDutyPcts(int brightness) {
+    std::string buf, pad;
+
+    for (auto i : BRIGHTNESS_RAMP) {
+        buf += pad;
+        buf += std::to_string(i * brightness / 255);
+        pad = ",";
+    }
+
+    return buf;
+}
 }  // anonymous namespace
 
 namespace android {
@@ -43,11 +59,35 @@ namespace V2_0 {
 namespace implementation {
 
 Light::Light(std::pair<std::ofstream, uint32_t>&& panel_backlight,
-             std::ofstream&& red_led, std::ofstream&& green_led, std::ofstream&& blue_led)
+             std::ofstream&& red_led, std::ofstream&& green_led, std::ofstream&& blue_led,
+             std::ofstream&& red_duty_pcts, std::ofstream&& green_duty_pcts, std::ofstream&& blue_duty_pcts,
+             std::ofstream&& red_start_idx, std::ofstream&& green_start_idx, std::ofstream&& blue_start_idx,
+             std::ofstream&& red_pause_lo, std::ofstream&& green_pause_lo, std::ofstream&& blue_pause_lo,
+             std::ofstream&& red_pause_hi, std::ofstream&& green_pause_hi, std::ofstream&& blue_pause_hi,
+             std::ofstream&& red_ramp_step_ms, std::ofstream&& green_ramp_step_ms, std::ofstream&& blue_ramp_step_ms,
+             std::ofstream&& red_blink, std::ofstream&& green_blink, std::ofstream&& blue_blink)
     : mPanelBacklight(std::move(panel_backlight)),
       mRedLed(std::move(red_led)),
       mGreenLed(std::move(green_led)),
-      mBlueLed(std::move(blue_led)) {
+      mBlueLed(std::move(blue_led)),
+      mRedDutyPcts(std::move(red_duty_pcts)),
+      mGreenDutyPcts(std::move(green_duty_pcts)),
+      mBlueDutyPcts(std::move(blue_duty_pcts)),
+      mRedStartIdx(std::move(red_start_idx)),
+      mGreenStartIdx(std::move(green_start_idx)),
+      mBlueStartIdx(std::move(blue_start_idx)),
+      mRedPauseLo(std::move(red_pause_lo)),
+      mGreenPauseLo(std::move(green_pause_lo)),
+      mBluePauseLo(std::move(blue_pause_lo)),
+      mRedPauseHi(std::move(red_pause_hi)),
+      mGreenPauseHi(std::move(green_pause_hi)),
+      mBluePauseHi(std::move(blue_pause_hi)),
+      mRedRampStepMs(std::move(red_ramp_step_ms)),
+      mGreenRampStepMs(std::move(green_ramp_step_ms)),
+      mBlueRampStepMs(std::move(blue_ramp_step_ms)),
+      mRedBlink(std::move(red_blink)),
+      mGreenBlink(std::move(green_blink)),
+      mBlueBlink(std::move(blue_blink)) {
     auto attnFn(std::bind(&Light::setAttentionLight, this, std::placeholders::_1));
     auto backlightFn(std::bind(&Light::setPanelBacklight, this, std::placeholders::_1));
     auto batteryFn(std::bind(&Light::setBatteryLight, this, std::placeholders::_1));
@@ -157,20 +197,78 @@ void Light::setSpeakerBatteryLightLocked() {
         mRedLed << 0 << std::endl;
         mGreenLed << 0 << std::endl;
         mBlueLed << 0 << std::endl;
+        mRedBlink << 0 << std::endl;
+        mGreenBlink << 0 << std::endl;
+        mBlueBlink << 0 << std::endl;
     }
 }
 
 void Light::setSpeakerLightLocked(const LightState& state) {
-    int red, green, blue;
+    int red, green, blue, blink;
+    int onMs, offMs, stepDuration, pauseHi;
     uint32_t colorRGB = state.color;
+
+    switch (state.flashMode) {
+        case Flash::TIMED:
+            onMs = state.flashOnMs;
+            offMs = state.flashOffMs;
+            break;
+        case Flash::NONE:
+        default:
+            onMs = 0;
+            offMs = 0;
+            break;
+    }
 
     red = (colorRGB >> 16) & 0xff;
     green = (colorRGB >> 8) & 0xff;
     blue = colorRGB & 0xff;
+    blink = onMs > 0 && offMs > 0;
 
-    mRedLed << red << std::endl;
-    mGreenLed << green << std::endl;
-    mBlueLed << blue << std::endl;
+    // Disable all blinking to start
+    mRedBlink << 0 << std::endl;
+    mGreenBlink << 0 << std::endl;
+    mBlueBlink << 0 << std::endl;
+
+    if (blink) {
+        stepDuration = RAMP_STEP_DURATION;
+        pauseHi = onMs - (stepDuration * RAMP_SIZE * 2);
+
+        if (stepDuration * RAMP_SIZE * 2 > onMs) {
+            stepDuration = onMs / (RAMP_SIZE * 2);
+            pauseHi = 0;
+        }
+
+        // Red
+        mRedStartIdx << 0 << std::endl;
+        mRedDutyPcts << getScaledDutyPcts(red) << std::endl;
+        mRedPauseLo << offMs << std::endl;
+        mRedPauseHi << pauseHi << std::endl;
+        mRedRampStepMs << stepDuration << std::endl;
+
+        // Green
+        mGreenStartIdx << RAMP_SIZE << std::endl;
+        mGreenDutyPcts << getScaledDutyPcts(green) << std::endl;
+        mGreenPauseLo << offMs << std::endl;
+        mGreenPauseHi << pauseHi << std::endl;
+        mGreenRampStepMs << stepDuration << std::endl;
+
+        // Blue
+        mBlueStartIdx << RAMP_SIZE * 2 << std::endl;
+        mBlueDutyPcts << getScaledDutyPcts(blue) << std::endl;
+        mBluePauseLo << offMs << std::endl;
+        mBluePauseHi << pauseHi << std::endl;
+        mBlueRampStepMs << stepDuration << std::endl;
+
+        // Start the party
+        mRedBlink << 1 << std::endl;
+        mGreenBlink << 1 << std::endl;
+        mBlueBlink << 1 << std::endl;
+    } else {
+        mRedLed << red << std::endl;
+        mGreenLed << green << std::endl;
+        mBlueLed << blue << std::endl;
+    }
 }
 
 }  // namespace implementation
