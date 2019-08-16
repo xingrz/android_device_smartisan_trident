@@ -1,8 +1,4 @@
 on init
-    # Elliptic
-    chmod 0666 /dev/elliptic0
-    chmod 0666 /dev/elliptic1
-
     # Create energy-aware scheduler tuning nodes
     mkdir /dev/stune/audio-app
     chown system system /dev/stune/audio-app
