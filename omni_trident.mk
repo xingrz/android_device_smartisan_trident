@@ -18,6 +18,7 @@
 PRODUCT_RELEASE_NAME := trident
 
 # Inherit from those products. Most specific first.
+$(call inherit-product, build/target/product/core_64_bit.mk)
 $(call inherit-product, build/target/product/embedded.mk)
 
 # Inherit some common MK stuff.
