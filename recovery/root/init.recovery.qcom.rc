@@ -32,8 +32,6 @@ on fs
     start logic_volume
     wait /dev/block/logic_data
 
-    export ANDROID_ROOT /system_root
-
 on boot
     setprop sys.usb.config adb
 
