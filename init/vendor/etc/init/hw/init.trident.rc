@@ -175,11 +175,6 @@ on property:vold.decrypt=trigger_restart_min_framework
     start qcom-c_main-sh
 #SMARTISAN_END:(CCM5024 Fix rild2 not start bug after encryption)
 
-service propset-bdaddr /vendor/bin/init.qcom.propset_bdaddr.sh
-    class core
-    user root
-    oneshot
-
 on charger
 # Wipower contrl sysfs
     chown system system /sys/class/power_supply/dc/current_max
