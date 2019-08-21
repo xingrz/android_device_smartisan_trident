@@ -1,0 +1,19 @@
+type logic_volume, domain;
+type logic_volume_exec, vendor_file_type, exec_type, file_type;
+
+init_daemon_domain(logic_volume)
+
+allow logic_volume block_device:lnk_file { create };
+allow logic_volume block_device:dir { w_dir_perms };
+allow logic_volume dm_device:chr_file { rw_file_perms };
+allow logic_volume dm_device:blk_file { rw_file_perms };
+allow logic_volume sec_block_device:blk_file { rw_file_perms };
+allow logic_volume ramdump_block_device:blk_file { rw_file_perms };
+allow logic_volume userdata_block_device:blk_file { rw_file_perms };
+allow logic_volume self:process { execmem };
+allow logic_volume logic_volume_exec:file { execute_no_trans };
+allow logic_volume self:capability { sys_admin };
+allow logic_volume kmsg_device:chr_file { rw_file_perms };
+allow logic_volume device:dir { r_dir_perms };
+allow logic_volume sysfs:file { r_file_perms };
+allow logic_volume sysfs:dir { r_file_perms };

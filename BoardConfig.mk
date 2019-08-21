@@ -164,6 +164,7 @@ VENDOR_SECURITY_PATCH := 2019-07-10
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 
 # Timeservice
 BOARD_USES_QC_TIME_SERVICES := true
