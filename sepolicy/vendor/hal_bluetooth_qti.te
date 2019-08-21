@@ -1,0 +1,1 @@
+allow hal_bluetooth_qti vendor_data_file:file { r_file_perms };
