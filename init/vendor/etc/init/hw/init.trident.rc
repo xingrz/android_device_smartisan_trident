@@ -163,28 +163,6 @@ on post-fs-data
     #start set bluetooth address to property
     start propset-bdaddr
 
-#SMARTISAN_BEGIN:(CCM4008: Modem debug tool, add mdmd service)
-#2018-01-15 hubin: add mdmd service M0219520
-service mdmd /system/vendor/bin/mdmd
-    class late_start
-    socket mdmd stream 0660 system factory
-    user root
-    group root
-    disabled
-
-on property:ro.debuggable=1
-    start mdmd
-#SMARTISAN_END
-
-# Begin Immersion changes
-# TouchSense Player Service
-service immvibed /system/bin/immvibed -p 99 -u 1000
-    class main
-    user root
-    group root
-    ioprio rt 4
-# End Immersion changes
-
 # SMARTISAN_BEGIN: (CCM4004: Default disable ATFWD daemon)
 # 2017-04-28 houxiaofei: Default disable atfwd daemon, and controlled by prop. M205031
 on property:radio.atfwd.start=true
@@ -197,36 +175,9 @@ on property:vold.decrypt=trigger_restart_min_framework
     start qcom-c_main-sh
 #SMARTISAN_END:(CCM5024 Fix rild2 not start bug after encryption)
 
-service wifi_monitor /vendor/bin/monitor -i wlan0 -d
-    class late_start
-    socket mon_wlan0 dgram 0660 root wifi
-    user root
-    group root
-
-service nds /system/xbin/nds
-    class late_start
-    user root
-    group system wifi
-    disabled
-    seclabel u:r:nds:s0
-        oneshot
-
-on property:net.wlan.fbstatus=ON
-    start nds
-
-on property:net.wlan.fbstatus=OFF
-    stop nds
-    write /proc/net/hdd_fb "OFF"
-
 service propset-bdaddr /vendor/bin/init.qcom.propset_bdaddr.sh
     class core
     user root
-    oneshot
-
-service rm_calibration /system/vendor/bin/sh /system/bin/rm_calibration.sh
-    class late_start
-    user system
-    group system
     oneshot
 
 on charger
@@ -243,11 +194,6 @@ service wipowerd /vendor/bin/wipowerd
     class main
     user system
     group system
-
-service dataroled /vendor/bin/dataroled
-    class main
-    user root
-    group root
 
 service smart_chg_start /vendor/bin/smart_charge
     class last_start
@@ -268,77 +214,3 @@ on property:debug.smart_chg.en=1
 on property:debug.smart_chg.en=0
     start smart_chg_stop
 #end smart_charge
-
-service aging_ro_init  /vendor/bin/aging_mem_test -i
-    class late_start
-    user root
-    group root shell
-    disabled
-    oneshot
-    seclabel u:r:shell:s0
-
-on property:aging.mem.ctl=CRC_INIT
-    start aging_ro_init
-
-service aging_rw_init  /vendor/bin/aging_mem_test -w
-    class late_start
-    user root
-    group root shell
-    disabled
-    oneshot
-    seclabel u:r:shell:s0
-
-on property:aging.mem.ctl=RW_TEST
-    start aging_rw_init
-
-service aging_crc_check  /vendor/bin/aging_mem_test -c
-    class late_start
-    user root
-    group root shell
-    disabled
-    oneshot
-    seclabel u:r:shell:s0
-
-on property:aging.mem.ctl=CRC_CHECK
-    start aging_crc_check
-
-service aging_ddr_test  /vendor/bin/aging_mem_test -d
-    class late_start
-    user root
-    group root shell
-    disabled
-    oneshot
-    seclabel u:r:shell:s0
-
-on property:aging.mem.ctl=DDR_TEST
-    start aging_ddr_test
-
-service aging_fddr_test  /vendor/bin/aging_mem_test -f
-    class late_start
-    user root
-    group root shell
-    disabled
-    oneshot
-    seclabel u:r:shell:s0
-
-on property:aging.mem.ctl=FDDR_TEST
-    start aging_fddr_test
-
-service aging_fddr_res /vendor/bin/aging_mem_test -r
-    class late_start
-    user root
-    group root shell
-    oneshot
-    seclabel u:r:shell:s0
-
-service init_tempcolor /vendor/bin/init_tempcolor.sh
-    class late_start
-    user root
-    group root shell
-    oneshot
-
-service inotifysrv /system/bin/sh /vendor/bin/inotifystart.sh
-    class late_start
-    user root
-    group root
-    seclabel u:r:inotifysrv:s0
