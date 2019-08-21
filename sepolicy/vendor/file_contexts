@@ -1,3 +1,6 @@
+# Light
+/(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service.trident	u:object_r:hal_light_default_exec:s0
+
 # Logic volume
 /(vendor|system/vendor)/bin/dm-tool		u:object_r:logic_volume_exec:s0
 /(vendor|system/vendor)/bin/logic_volume	u:object_r:logic_volume_exec:s0
