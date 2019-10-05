@@ -232,10 +232,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/init/vendor,$(TARGET_COPY_OUT_VENDOR))
 
-# Input
-PRODUCT_PACKAGES += \
-    KeyHandlerTrident
-
 # IPA
 PRODUCT_PACKAGES += \
     ipacm \
@@ -257,10 +253,6 @@ PRODUCT_COPY_FILES += \
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.trident
-
-# LiveDisplay
-PRODUCT_PACKAGES += \
-    vendor.mokee.livedisplay@2.0-service-sdm
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -364,10 +356,6 @@ PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-impl \
     android.hardware.thermal@1.0-service \
     thermal.sdm845
-
-# Trust
-PRODUCT_PACKAGES += \
-    vendor.mokee.trust@1.0-service
 
 # USB
 PRODUCT_PACKAGES += \
