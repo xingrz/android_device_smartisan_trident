@@ -32,7 +32,6 @@ vendor/lib64/vendor.qti.hardware.fm@1.0.so
 -priv-app/CNEService/CNEService.apk
 etc/permissions/cneapiclient.xml
 etc/permissions/com.quicinc.cne.xml
-etc/permissions/privapp-permissions-qti.xml
 framework/cneapiclient.jar
 framework/com.quicinc.cne.api-V1.0-java.jar
 framework/com.quicinc.cne.api-V1.1-java.jar
