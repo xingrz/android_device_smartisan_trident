@@ -1,0 +1,9 @@
+on init
+    chown system system /sys/class/haptic/player/load_bin
+    chown system system /sys/class/haptic/player/phe_name
+    chown system system /sys/class/haptic/player/play_phe
+
+service vendor.vibrator-1-3-trident /vendor/bin/hw/android.hardware.vibrator@1.3-service.trident
+    class hal
+    user system
+    group system

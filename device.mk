@@ -342,7 +342,7 @@ PRODUCT_PACKAGES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.0-service.trident
+    android.hardware.vibrator@1.3-service.trident
 
 # VNDK
 PRODUCT_PACKAGES += \

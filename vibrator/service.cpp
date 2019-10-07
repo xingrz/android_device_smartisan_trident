@@ -14,25 +14,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#define LOG_TAG "android.hardware.vibrator@1.0-service.trident"
+#define LOG_TAG "android.hardware.vibrator@1.3-service.trident"
 
 #include <android-base/logging.h>
-#include <android/hardware/vibrator/1.0/IVibrator.h>
+#include <android/hardware/vibrator/1.3/IVibrator.h>
 #include <hidl/HidlTransportSupport.h>
 
 #include "Vibrator.h"
 
 using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
-using android::hardware::vibrator::V1_0::IVibrator;
-using android::hardware::vibrator::V1_0::implementation::Vibrator;
+using android::hardware::vibrator::V1_3::IVibrator;
+using android::hardware::vibrator::V1_3::implementation::Vibrator;
 using namespace android;
 
 const static std::string kVibratorStatePath = "/sys/class/leds/vibrator/state";
 const static std::string kVibratorDurationPath = "/sys/class/leds/vibrator/duration";
 const static std::string kVibratorActivatePath = "/sys/class/leds/vibrator/activate";
 
+const static std::string kVibratorEffectLoadPath = "/sys/class/haptic/player/load_bin";
+const static std::string kVibratorEffectNamePath = "/sys/class/haptic/player/phe_name";
+const static std::string kVibratorEffectPlayPath = "/sys/class/haptic/player/play_phe";
+
 status_t registerVibratorService() {
+    std::string tmp;
+
     std::ofstream vibratorState(kVibratorStatePath);
     if (!vibratorState) {
         LOG(ERROR) << "Failed to open " << kVibratorStatePath << ", error=" << errno
@@ -51,10 +57,33 @@ status_t registerVibratorService() {
                    << " (" << strerror(errno) << ")";
     }
 
+    std::ifstream vibratorEffectLoad(kVibratorEffectLoadPath);
+    if (!vibratorEffectLoad) {
+        LOG(ERROR) << "Failed to open " << kVibratorEffectLoadPath << ", error=" << errno
+                   << " (" << strerror(errno) << ")";
+    } else {
+        vibratorEffectLoad >> tmp;
+        vibratorEffectLoad.close();
+    }
+
+    std::ofstream vibratorEffectName(kVibratorEffectNamePath);
+    if (!vibratorEffectName) {
+        LOG(ERROR) << "Failed to open " << kVibratorEffectNamePath << ", error=" << errno
+                   << " (" << strerror(errno) << ")";
+    }
+
+    std::ifstream vibratorEffectPlay(kVibratorEffectPlayPath);
+    if (!vibratorEffectPlay) {
+        LOG(ERROR) << "Failed to open " << kVibratorEffectPlayPath << ", error=" << errno
+                   << " (" << strerror(errno) << ")";
+    }
+
     sp<IVibrator> vibrator = new Vibrator(
             std::move(vibratorState),
             std::move(vibratorDuration),
-            std::move(vibratorActivate));
+            std::move(vibratorActivate),
+            std::move(vibratorEffectName),
+            std::move(vibratorEffectPlay));
 
     return vibrator->registerAsService();
 }

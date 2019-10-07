@@ -905,6 +905,9 @@ vendor/lib64/libthermalclient.so
 -vendor/lib64/libtime_genoff.so
 vendor/bin/time_daemon
 
+# Vibrator
+vendor/etc/effects/imagis_phe.bin
+
 # Wi-Fi
 vendor/bin/cnss-daemon
 vendor/bin/cnss_diag
