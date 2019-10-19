@@ -102,7 +102,6 @@ AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true
 
 PRODUCT_PACKAGES += \
-    brillo_update_payload \
     otapreopt_script \
     update_engine \
     update_engine_sideload \
@@ -110,6 +109,9 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
+
+PRODUCT_HOST_PACKAGES += \
+    brillo_update_payload
 
 # Audio
 PRODUCT_PACKAGES += \
