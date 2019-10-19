@@ -29,7 +29,7 @@ on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
 
-    exec -- /sbin/logic_volume -f /etc/logic_volume.conf
+    exec -- /bin/logic_volume -f /etc/logic_volume.conf
     wait /dev/block/logic_data
 
 on init

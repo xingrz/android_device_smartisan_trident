@@ -314,6 +314,10 @@ PRODUCT_PACKAGES += \
     rcs_service_api \
     rcs_service_api.xml
 
+# Recovery
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,$(TARGET_COPY_OUT_RECOVERY)/root)
+
 # RenderScript
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
