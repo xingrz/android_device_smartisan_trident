@@ -98,6 +98,13 @@ vendor/lib64/libxml.so
 vendor/lib64/vendor.qti.data.factory@1.0.so
 vendor/lib64/vendor.qti.hardware.data.latency@1.0.so
 
+# DRM - Widevine
+vendor/bin/hw/android.hardware.drm@1.1-service.widevine
+vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc
+vendor/lib/mediadrm/libwvdrmengine.so
+vendor/lib64/libwvhidl.so
+vendor/lib64/mediadrm/libwvdrmengine.so
+
 # GPS
 # -priv-app/com.qualcomm.location/com.qualcomm.location.apk
 -vendor/lib/libloc_api_v02.so
