@@ -195,23 +195,3 @@ service wipowerd /vendor/bin/wipowerd
     class main
     user system
     group system
-
-service smart_chg_start /vendor/bin/smart_charge
-    class last_start
-    user system  radio
-    group system system  wakelock
-    disabled
-    oneshot
-
-service smart_chg_stop /vendor/bin/smart_charge -k
-    class last_start
-    user system  radio
-    group system system  wakelock
-    disabled
-    oneshot
-
-on property:debug.smart_chg.en=1
-    start smart_chg_start
-on property:debug.smart_chg.en=0
-    start smart_chg_stop
-#end smart_charge
