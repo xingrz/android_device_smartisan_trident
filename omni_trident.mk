@@ -35,3 +35,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="trident-user 8.1.0 OPM1.171019.026 1 dev-keys"
 
 BUILD_FINGERPRINT := SMARTISAN/trident/trident:8.1.0/OPM1.171019.026/1547449872:user/dev-keys
+
+PRODUCT_PACKAGES += \
+    slotswitcher

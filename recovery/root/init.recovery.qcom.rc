@@ -42,9 +42,20 @@ on fs
 on boot
     setprop sys.usb.config adb
 
+on property:sys.powerctl=*
+    start slotswitcher
+
 service logic_volume /sbin/logic_volume -f /etc/logic_volume.conf
     disabled
     oneshot
     user root
     group root
+    seclabel u:r:recovery:s0
+
+service slotswitcher /sbin/slotswitcher
+    disabled
+    oneshot
+    user root
+    group root
+    shutdown critical
     seclabel u:r:recovery:s0
