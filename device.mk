@@ -128,11 +128,7 @@ PRODUCT_PACKAGES += \
 
 # Boot control
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.0-impl \
-    android.hardware.boot@1.0-impl.recovery \
-    android.hardware.boot@1.0-service \
-    bootctrl.sdm845 \
-    bootctrl.sdm845.recovery
+    slotswitcher
 
 # Camera
 PRODUCT_PACKAGES += \

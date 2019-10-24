@@ -1,0 +1,10 @@
+service vendor.slotswitcher /vendor/bin/hw/slotswitcher
+    class core
+    user root
+    group root
+    oneshot
+    disabled
+    shutdown critical
+
+on property:sys.powerctl=*
+    start vendor.slotswitcher
