@@ -94,25 +94,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Haters gonna hate..
 PRODUCT_CHARACTERISTICS := nosdcard
 
-# A/B
-AB_OTA_POSTINSTALL_CONFIG += \
-    FILESYSTEM_TYPE_system=ext4 \
-    POSTINSTALL_OPTIONAL_system=true \
-    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
-    RUN_POSTINSTALL_system=true
-
-PRODUCT_PACKAGES += \
-    otapreopt_script \
-    update_engine \
-    update_engine_sideload \
-    update_verifier
-
-PRODUCT_PACKAGES_DEBUG += \
-    update_engine_client
-
-PRODUCT_HOST_PACKAGES += \
-    brillo_update_payload
-
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
