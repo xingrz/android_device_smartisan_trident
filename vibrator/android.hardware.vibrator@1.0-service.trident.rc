@@ -1,0 +1,4 @@
+service vendor.vibrator-1-0-trident /vendor/bin/hw/android.hardware.vibrator@1.0-service.trident
+    class hal
+    user system
+    group system
