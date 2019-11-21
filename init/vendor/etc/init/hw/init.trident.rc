@@ -138,6 +138,9 @@ on boot
     chmod 0644 /sys/class/dual_role_usb/otg_default/data_role
     chmod 0666 /sys/devices/platform/soc/ae90000.qcom,dp_display/dp_ctrl_status
 
+    # Disable touch pressure
+    write /sys/bus/i2c/devices/14-004b/synaptics_tcm.0/synaptics_tcm/prs_en 0
+
     # Wipower contrl sysfs
     chown system system /sys/class/power_supply/dc/current_max
     chown system system /sys/bus/i2c/devices/0-0061/chip_FC_enable
